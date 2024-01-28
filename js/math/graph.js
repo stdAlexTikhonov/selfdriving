@@ -16,6 +16,22 @@ class Graph {
         return false;
     }
 
+    addSegment(segment) {
+        this.segments.push(segment);
+    }
+
+    tryAddSegment(segment) {
+        if (!this.containsSegment(segment) && !segment.p1.equals(segment.p2)) {
+            this.addSegment(segment);
+            return true;
+        }
+        return false;
+    }
+
+    containsSegment(segment) {
+        return this.segments.find(seg => seg.equals(segment))
+    }
+
     containsPoint(point) {
         return this.points.find(p => p.equals(point));
     }
