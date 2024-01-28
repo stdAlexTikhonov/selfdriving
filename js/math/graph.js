@@ -36,6 +36,10 @@ class Graph {
         return this.points.find(p => p.equals(point));
     }
 
+    removeSegment(segment) {
+        this.segments.splice(this.segments.indexOf(segment), 1);
+    }
+
     draw(ctx) {
         for (const seg of this.segments) {
             seg.draw(ctx);
