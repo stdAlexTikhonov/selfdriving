@@ -7,10 +7,28 @@
     <body>
         <h1>World</h1>
         <canvas id="root"></canvas>
+
+        <div  id="controls">
+            <button onclick="addRandomPoint()">Add random Point</button>
+        </div>
+
         <script src="js/math/graph.js"></script>
         <script src="js/primitives/point.js"></script>
         <script src="js/primitives/segment.js"></script>"
         <script>
+            
+            function addRandomPoint() {
+                const success = graph.tryAddPoint(
+                    new Point(
+                        Math.random() * root.width,
+                        Math.random() * root.height
+                    )
+                );
+                ctx.clearRect(0, 0, root.width, root.height);
+                graph.draw(ctx);
+                console.log(success);
+            }
+
             root.width = 600;
             root.height = 600;
             const ctx = root.getContext("2d");
